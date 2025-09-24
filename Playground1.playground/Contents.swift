@@ -80,3 +80,35 @@ func increment( getal1: inout Double, getal2: inout Int)
 
 increment(getal1: &x ,getal2: &y)
 print(x,y)
+
+// deel 3
+
+enum StringConversionError : Error {
+    case geenparameter
+    case legeparameter
+}
+
+func getUpperLowerCount(str: String?) throws-> (uppercase: String, lowercase: String, charCount: Int)
+{
+    guard let newStr = str else {
+        throw StringConversionError.geenparameter
+    }
+    if newStr.isEmpty {
+        throw StringConversionError.legeparameter
+    }
+        let uppercase = newStr.uppercased()
+        let lowercase = newStr.lowercased()
+        let charCount = newStr.count
+        
+        return (uppercase, lowercase, charCount)
+    }
+
+do {
+    //try print(getUpperLowerCount(str: nil))
+    try print(getUpperLowerCount(str: ""))
+    try print(getUpperLowerCount(str: "IOS 26"))
+} catch StringConversionError.geenparameter {
+            print("nil value parameter not allowed")
+}catch StringConversionError.legeparameter {
+                print("Empty String parameter not allowed")
+}
