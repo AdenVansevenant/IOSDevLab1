@@ -88,7 +88,7 @@ enum StringConversionError : Error {
     case legeparameter
 }
 
-func getUpperLowerCount(str: String?) throws-> (uppercase: String, lowercase: String, charCount: Int)
+func getUpperLowerCountException(str: String?) throws-> (uppercase: String, lowercase: String, charCount: Int)
 {
     guard let newStr = str else {
         throw StringConversionError.geenparameter
@@ -104,9 +104,9 @@ func getUpperLowerCount(str: String?) throws-> (uppercase: String, lowercase: St
     }
 
 do {
-    //try print(getUpperLowerCount(str: nil))
-    try print(getUpperLowerCount(str: ""))
-    try print(getUpperLowerCount(str: "IOS 26"))
+    //try print(getUpperLowerCountException(str: nil))
+    try print(getUpperLowerCountException(str: ""))
+    try print(getUpperLowerCountException(str: "IOS 26"))
 } catch StringConversionError.geenparameter {
             print("nil value parameter not allowed")
 }catch StringConversionError.legeparameter {
