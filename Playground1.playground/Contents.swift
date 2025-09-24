@@ -45,9 +45,38 @@ func divide(input: Int, input2: Int) -> Double
 {
     return Double(input/input2)
 }
-print(divide(input: 3, input2: 0))
+//print(divide(input: 3, input2: 0))
 
-func calculate(nummers: Double ) -> Double
+func calculate(nummers: Double... ) -> (avg: Double, min: Double, max: Double, count: Int)?
 {
-    
+    if nummers.isEmpty {
+        return nil
+    }
+    else
+    {
+        let sum = nummers.reduce(0, +)
+        let avg = sum/Double(nummers.count)
+        let min = nummers.min()!
+        let max = nummers.max()!
+        let count = nummers.count
+        
+        return (avg, min, max, count)
+    }
 }
+
+print(calculate(nummers: 10, 0, 5))
+print(calculate(nummers: 4, 5, 6, -3))
+print(calculate(nummers: -3))
+print(calculate())
+
+var x = 10.0
+var y = 3
+
+func increment( getal1: inout Double, getal2: inout Int)
+{
+     getal1 = getal1+1
+    getal2 = getal2+1
+}
+
+increment(getal1: &x ,getal2: &y)
+print(x,y)
